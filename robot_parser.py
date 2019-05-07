@@ -291,9 +291,18 @@ class Motion:
         plt.show()
                         
 
+def read2save(filename, k, n):
+    robot = Robot( (filename % k) + '.asf')
+    for i in range(1, n+1):
+        motion = Motion(robot, (filename % k) + '_%02d.amc' % i)
+        motion.motion_save('data/walk/%02d_%02d' % (k, i), 'rhumerus')
+        
+
+
 if __name__ == "__main__":
-    robot = Robot('allasfamc/05/05.asf')
+    read2save('allasfamc/07/%02d', 7, 12)
+    # robot = Robot('allasfamc/05/05.asf')
     # robot.show()
-    motion = Motion(robot, 'allasfamc/05/05_10.amc')
+    # motion = Motion(robot, 'allasfamc/05/05_10.amc')
     # motion.draw_motion_xyz('root')
-    motion.draw_motion_anime()
+    # motion.draw_motion_anime()
